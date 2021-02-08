@@ -1,0 +1,119 @@
+// 参数
+// 页面最小宽度
+$PAGE_WIDTH_WIDE_SCREEN: 1400px;
+$PAGE_WIDTH: 1200px;
+
+$PAGE_MAX_WIDTH: $PAGE_WIDTH;
+// 如何使用函数和mixins
+
+$THEME_ORANGE: rgba(251,87,66,1);
+$THEME_ORANGE_HOVER: #E5503C;
+
+$GRAY: rgba(0,0,0,0.6);
+
+button {
+  box-shadow: 0px;
+  outline: 0px;
+  border: 0px;
+}
+
+.imgbg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+
+  &.space-between {
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.full-box {
+  width: 100vw;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-width: $PAGE_MAX_WIDTH;
+
+  // 统一标题
+  .box-title {
+    font-size:40px;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(0,0,0,1);
+    line-height:50px;
+    text-align: center;
+    width: 100%;
+    padding-top: 90px - 5px;
+    padding-bottom: 70px - 5px;
+  }
+}
+
+.container-screen-width {
+  width: $PAGE_WIDTH_WIDE_SCREEN;
+  margin: 0 auto;
+}
+
+@media (max-width: 1500px) {
+  .container-screen-width {
+    width: $PAGE_WIDTH;
+    margin: 0 auto;
+  }
+  .full-box {
+    .container-screen-width {
+      .three-cols {
+        & > .card {
+          width: (1200px - 40px) / 3;
+          margin-right: 20px;
+        }
+      }
+      .two-cols {
+        & > .card {
+          width: (1200px - 20px) / 2;
+        }
+        & > .margin-card {
+          // 原来margin 200
+          margin-left: 50px;
+          margin-right: 50px;
+        }
+      }
+      .four-cols {
+        & > .card {
+          width: (1200px - 60px) / 4;
+        }
+      }
+    }
+  }
+}
+
+// animation
+.easing {
+  transition: all 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+// 头图
+.head-img-bg {
+  background-color: gray;
+}
+
+@mixin flex-align-center ($just: center, $align: center ) {
+  display: flex;
+  align-items: $align;
+  justify-content: $just;
+}
+
+@mixin flex-center ($align: center) {
+  display: flex;
+  align-items: $align;
+}
+
+@mixin flex-just ($align: center) {
+  display: flex;
+  justify-content: $align;
+}
+
