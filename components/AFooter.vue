@@ -1,33 +1,28 @@
 <template>
-  <div :style="{backgroundImage: `url('${ImgHome.imgFooterBg}')`}" class="footer">
+  <div class="footer">
     <div class="container">
-      <div class="flex-row">
-        <div class="contact">
-          <img :src="ImgHome.imgFooterLogoWhite" alt="" class="logo">
-          <p class="contact-us">联系我们</p>
-          <p class="position">上海总部：上海浦东陆家嘴东路166号中国保险大厦2704室</p>
+      <div class="link-content">
+        <div class="link-item btn">
+          <p class="title">友情链接</p>
+          <a href="https://www.wanshuijin.com/" target="_blank">完税金</a>
         </div>
-        <div class="right">
-          <img :src="ImgHome.imgQrcode" alt="" class="qrcode">
-          <p class="qrcode-desc">扫描二维码 了解更多</p>
+        <div class="link-item btn">
+          <p class="title">产品与服务</p>
+          <a href="https://www.wanshuijin.com/" target="_blank">税务云平台</a>
+          <a href="https://www.wanshuijin.com/" target="_blank">精品课</a>
         </div>
-        <div class="right">
-          <img :src="ImgHome.imgSmQrcode" alt="" class="qrcode">
-          <p class="qrcode-desc">扫描二维码 进入小程序</p>
+        <div class="link-item">
+          <p class="title">联系我们</p>
+          <span>邮箱：zhouhong@wanshuijin.com</span>
         </div>
       </div>
-      <p class="bottom">
-        <span>Copyright <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">沪ICP备19039348号-1</a> © 2006-2019 WANSHUIJIN完税金</span>
-        <a href="http://wap.scjgj.sh.gov.cn/businessCheck/verifKey.do?showType=extShow&serial=9031000020190828153229000004976296-SAIC_SHOW_310000-2c9be8bd710251bb017163f61e9e3bb1900&signData=MEUCIQCZ6sNbwCqQL581oXBA4xr4IHU38h34i45N50Xk9lWnAwIgTtMEykgf589OQ/pTUgbdlFPHRqorPH/wNgBvmIUMetY=" target="_blank">
-<!--        <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">-->
-          <img :src="ImgHome.imgPolice" alt="">
-        </a>
-      </p>
+      <div class="home-footer">
+        上海添青科技有限公司 备案号:12345
+      </div>
     </div>
   </div>
 </template>
 <script>
-// import { imgbg } from './utils/filters'
 import ImgHome from '@/assets/home'
 
 export default {
@@ -53,12 +48,11 @@ export default {
   position: relative;
   display: flex;
   width: 100%;
-  // min-width: 1028px;
 
   min-width: $PAGE_MAX_WIDTH;
   // height: 491px;
   height: 326px;
-  background-color: #FB5640;
+  /*background-color: #FB5640;*/
   align-items: center;
   justify-content: center;
 
@@ -70,94 +64,50 @@ export default {
     min-width: $PAGE_MAX_WIDTH;
   }
 
-  .flex-row {
-    // height: 450px;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
+  .link-content {
+    width: 100%;
+    background: #131C33;
+    padding: 0 38px;
+    .link-item {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 400;
+      color: #A8A8A8;
+      &.btn {
+        border-bottom: 1px solid #353C50;
+      }
+      padding: 28px 0 26px 0;
+      .title {
+        font-size: 15px;
+        font-weight: 400;
+        color: #FFFFFF;
+        line-height: 21px;
+        width: 75px;
+        margin-right: 50px;
+      }
 
-    padding-top: 51px;
-  }
-  .contact {
-    flex: 1;
-  }
-  .right {
-    // padding-top: 51px;
-    text-align: right;
-    flex-shrink: 0;
-    &:last-of-type {
-      margin-left: 30px;
-    }
-
-    .qrcode {
-      background-color: white;
-      width: 147px;
-      height: 147px;
-    }
-    .qrcode-desc {
-      font-size:16px;
-      font-family:PingFang SC;
-      font-weight:400;
-      color:rgba(255,255,255,1);
-      line-height:24px;
-
-      margin-top: 26px - 4px;
+      a {
+        text-decoration: none;
+        margin-right: 38px;
+        color: #A8A8A8;
+        &:hover {
+          color: #FFFFFF;
+        }
+      }
     }
   }
 
-  .logo {
-    width:188px;
-    height:72px;
-  }
-  .position {
-    font-size:16px;
-    font-family:PingFang SC;
-    font-weight:500;
-    color:rgba(255,255,255,1);
-    line-height:24px;
-    margin-top: 12px;
-  }
-  .contact-us {
-    // width:88px;
-    // height:21px;
-    font-size:22px;
-    font-family:PingFang SC;
-    font-weight:bold;
-    color:rgba(255,255,255,1);
-    line-height:25px;
-
-    margin-top: 37px;
-  }
-  .bottom {
-    margin: 40px 0 20px 0;
-    @include flex-align-center();
-    a {
-      color: white;
-      text-decoration: none;
-    }
-    span {
-      text-align: center;
-      font-size:7px;
-      font-family:PingFang SC;
-      font-weight:400;
-      color:rgba(255,255,255,1);
-      // line-height:12px;
-      // width:315px;
-      // height:14px;
-      font-size:14px;
-      font-family:PingFang SC;
-      font-weight:500;
-      color:rgba(255,255,255,1);
-      line-height:25px;
-    }
-    img {
-      cursor: pointer;
-      width:40px;
-      height: 45px;
-      margin-left: 10px;
-      flex-shrink: 0;
-    }
+  .home-footer {
+    width: 100%;
+    height: 75px;
+    line-height: 75px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+    color: #A8ADB6;
+    background: #303645;
   }
 }
 </style>

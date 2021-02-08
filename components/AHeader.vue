@@ -1,10 +1,12 @@
 <template>
   <div class="page-header">
-    <div class="container flex-row">
+    <div class="container">
       <div class="left logo">
-        <a href="/" title="完税金官网">
-          <img :src="ImgHome.imgLogo" alt="" class="logo">
-        </a>
+        <img :src="ImgHome.imgHomeLogo" alt="">
+        <div class="login">
+          <span class="free-register">免费注册</span>
+          <span class="free-login">登录</span>
+        </div>
       </div>
       <div class="navs">
         <a
@@ -41,8 +43,6 @@
             </div>
           </div>
         </a>
-
-        <a href="http://admin.wanshuijin.com/company" class="easing btn-ent-login" target="_blank">企业登录</a>
       </div>
     </div>
   </div>
@@ -131,42 +131,56 @@ export default {
 
 $NAV_SELECTED_COLOR: black;
 .page-header {
-  // height: 90px;
 
   .container {
     // width: 100vw;
     width: $PAGE_MAX_WIDTH;
-    // padding-top: 23px;
-    // padding-bottom: 22px;
 
     margin: 0 auto;
 
     align-items: center;
     justify-content: space-between;
+    .logo {
+      margin: 10px 60px 8px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      img {
+        width: 96px;
+        height: 35px;
+      }
+      .login {
+        font-weight: bold;
+        line-height: 21px;
+        font-size: 15px;
+        .free-register {
+          color: #1F1F1F;
+        }
+        .free-login {
+          color: #2469F3;
+          margin-left: 43px;
+        }
+      }
+    }
   }
 
   .navs {
+    margin-left: 48px;
+    margin-bottom: 16px;
     display: flex;
     flex-direction: row;
     // 企业登录
     .nav-item {
-      font-size:14px;
-      font-family:PingFang SC;
+      font-size:15px;
       font-weight:500;
       color:rgba(0,0,0,1);
-      line-height:50px;
-
+      line-height:21px;
       text-decoration: none;
-      padding: 20px 30px;
       font-size:14px;
-      font-family:PingFang SC;
-      font-weight:500;
-      color:rgba(0,0,0,0.5);
-      line-height:50px;
-
-      position: relative;
+      color: rgba(0,0,0,.6);
       display: block;
-      // overflow: hidden;
+      margin-right: 80px;
 
       .nav-cols {
         display: none;
@@ -257,30 +271,5 @@ $NAV_SELECTED_COLOR: black;
     }
   }
 
-  .btn-ent-login {
-    display: inline-block;
-    width:82px;
-    height:30px;
-    background:rgba(251,87,66,1);
-    border-radius:15px;
-    text-align: center;
-    text-decoration: none;
-
-    margin-top: 30px;
-
-    // width:56px;
-    // height:13px;
-    font-size:14px;
-    font-family:PingFang SC;
-    font-weight:500;
-    color:rgba(255,255,255,1);
-    line-height:30px;
-
-    margin-left: 26px;
-
-    &:hover {
-      background-color: $THEME_ORANGE_HOVER;
-    }
-  }
 }
 </style>

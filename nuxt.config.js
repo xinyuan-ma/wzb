@@ -5,7 +5,7 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: '完税金',
+    title: '问政宝',
     meta: [],
     link: [],
   },
@@ -55,7 +55,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend (config, ctx) {
-    }
+    // extend (config, ctx) {
+    // }
   }
 }
