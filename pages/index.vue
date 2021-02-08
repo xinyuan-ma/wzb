@@ -181,108 +181,45 @@
         <p class="title">客户反馈</p>
       </div>
 
-<!--      <el-carousel type="card" height="288px" :interval="3000" :autoplay="false">-->
-<!--        <el-carousel-item v-for="(item,key) in feedBackList" :key="key">-->
-<!--          <div class="feedBack-list">-->
-<!--            <div class="feedBack-top">-->
-<!--              <img :src="item.icon" alt="">-->
-<!--              <div class="feedBack-info">-->
-<!--                <p class="title">{{item.name}}</p>-->
-<!--                <p class="company">{{item.company}}</p>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class="feedBack-des">{{item.des}}</div>-->
-<!--          </div>-->
-<!--        </el-carousel-item>-->
-<!--      </el-carousel>-->
-
       <div class="swiper-container">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">slider1</div>
-          <div class="swiper-slide">slider2</div>
-          <div class="swiper-slide">slider3</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 我们将提供 -->
-    <div class="full-box provide-box">
-      <div class="container-screen-width">
-        <div class="box-title">提供服务</div>
-        <div class="flex-row four-cols">
-          <div v-for="(card, index) in provideServer" :key="index" class="card provide-card easing">
-            <div class="text easing">
-              <div class="align-center">
-                <img :src="card.icon" alt="" class="icon">
+          <div class="swiper-slide" v-for="(item,key) in feedBackList" :key="key">
+            <div class="feedBack-list">
+              <div class="feedBack-top">
+                <img :src="item.icon" alt="">
+                <div class="feedBack-info">
+                  <p class="title">{{item.name}}</p>
+                  <p class="company">{{item.company}}</p>
+                </div>
               </div>
-              <div class="card-title" v-html="card.title"></div>
+              <div>{{item.des}}</div>
             </div>
           </div>
         </div>
+        <div class="swiper-pagination"></div>
       </div>
     </div>
 
-    <!--赋能金融机构-->
-    <div class="finance-img-bg imgbg full-box">
-      <div class="container-screen-width">
-        <p class="finance-tilte">赋能金融机构</p>
-        <p class="finance-destail">个税通服务目前已陆续入驻银行与保险机构。在官方APP应用的会员权益商城中，可通过积分兑换的方式领取服务包。</p>
-        <div class="finance-list-container">
-          <div class="finance-list" v-for="(item, key) in financeList" :key="key">
-            <div class="finance-img imgbg" :style="item.img | imgbg">
-              <!--<div class="finance-bg">-->
-              <div class="finance-des-ft" v-if="key == 1">
-                <p>个人完税权益</p>
-                <p>9900积分</p>
-              </div>
-              <div class="finance-des-sd" v-if="key == 1">
-                <p>个人汇算清缴权益</p>
-                <p>19800积分</p>
-              </div>
-              <!--</div>-->
-            </div>
-            <div class="finance-title">{{item.title}}</div>
-            <div class="finance-des">{{item.des}}</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!--输入电话框-->
-    <FillTaxPlan></FillTaxPlan>
   </div>
 </template>
 
 <script>
   import ImgHome from '@/assets/home'
-  import ImgPersonalTax from '@/assets/personalTax'
   import {imgbg} from '@/components/utils/filters'
-  import FButton from '@/components/FButton'
-  import FInput from '@/components/FInput'
-  import FillTaxPlan from '@/components/FillTaxPlan'
 
-  import {CheckForm} from '@/components/config/checkForm'
-  import lessonMiddle1 from "~/assets/home/wzb/lessonMiddle1.png";
-  import lessonBot1 from "~/assets/home/wzb/lessonBot1.png";
-  import feedBack from "~/assets/home/wzb/feedBack.png";
 
   export default {
     name: 'Contract',
-    components: {
-      FButton,
-      FInput,
-      FillTaxPlan
-    },
+    components: {},
     head() {
       return {
-        title: '完税金 - 合伙人计划'
+        title: '问政宝 - 首页'
       }
     },
-    filters: {imgbg,},
+    filters: {imgbg},
     data() {
       return {
         ImgHome,
-        ImgPersonalTax,
         projectList: [
           {
             icon: ImgHome.project2,
@@ -469,48 +406,37 @@
             name: 'Lesa',
             company: '上海市**税务咨询有限公司',
             des: '成为问政宝的忠实粉丝是朋友推荐的。因为自己刚刚从事这个行业，很多东西也不太了解。自己想提升一下朋友就推荐了问政宝，自己也找了其他同类型平台对比发现还是问政宝好。对工作和学习都好很大的帮助，希望问政宝越办越好。'
-          }
-        ],
-
-
-        provideServer: [
-          {
-            icon: ImgPersonalTax.imgServer1,
-            title: '个税计算工具包'
           },
           {
-            icon: ImgPersonalTax.imgServer2,
-            title: '退税/补税测评系统'
+            icon: ImgHome.feedBack,
+            name: 'Lesa',
+            company: '上海市**税务咨询有限公司',
+            des: '成为问政宝的忠实粉丝是朋友推荐的。因为自己刚刚从事这个行业，很多东西也不太了解。自己想提升一下朋友就推荐了问政宝，自己也找了其他同类型平台对比发现还是问政宝好。对工作和学习都好很大的帮助，希望问政宝越办越好。'
           },
           {
-            icon: ImgPersonalTax.imgServer3,
-            title: '个税汇算清缴课程<br>免费学习'
-          },
-          {
-            icon: ImgPersonalTax.imgServer4,
-            title: '专业税务专家一对一指导<br>在线解答个税问题'
-          },
-        ],
-        financeList: [
-          {
-            img: ImgPersonalTax.imgFinance1,
-            title: '入口一',
-            des: '在权益中心页面，内置banner'
-          },
-          {
-            img: ImgPersonalTax.imgFinance2,
-            title: '入口二',
-            des: '在积分兑换页面，上架商品'
+            icon: ImgHome.feedBack,
+            name: '李*',
+            company: '深圳市**科技有限公司',
+            des: '最近公司有做这方面的业务，领导说要找一个好的平台给员工培训一下这方面的知识，然后在网上看到问政宝这个平台就加工作人员聊了一下。看得出来很专业，也去公司看过，价格也便宜，想着反正要用就买了问政宝的会员。内部培训同事用完以后都说买对了很好用，里面的内容很系统全面还有智能机器人随时能解答问题。'
           }
         ]
       }
     },
     mounted() {
-      let mySwiper = new Swiper('.swiper-container', {
-        autoplay: true,//可选选项，自动滑动
-      })
+      this.makeSwiper()
     },
     methods: {
+      makeSwiper () {
+        let mySwiper = new Swiper('.swiper-container', {
+          // autoplay: true,//可选选项，自动滑动
+          slidesPerView: 1.6,
+          // loop: true,
+          grabCursor: true,
+          pagination: {
+            el: '.swiper-pagination',
+          }
+        })
+      }
     }
   }
 </script>
@@ -952,10 +878,11 @@
   .feedback {
     width: 100%;
     background: #0F1012;
-    padding: 40px 0 28px 0;
+    padding-top: 40px;
 
     .feedback-des {
       text-align: center;
+      margin-bottom: 60px;
       .des {
         font-size: 53px;
         font-weight: 400;
@@ -1008,90 +935,30 @@
     }
   }
 
-  .provide-box {
-    height: 480px;
-    background-color: #F2F2F2;
-    display: flex;
-    flex-direction: column;
-
-    .box-title {
-      display: block;
-      text-align: center;
-      font-size: 30px;
-      font-weight: bold;
-      color: rgba(0, 0, 0, 1);
-      padding-top: 55px !important;
-      padding-bottom: 40px !important;
+  .swiper-container {
+    width: 1200px;
+    height: 320px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    .swiper-slide {
+      width: 500px !important;
     }
-
-    .four-cols {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      justify-content: center;
-      flex-wrap: wrap;
-
-      .provide-card {
-        height: 260px;
-        width: 250px !important;
-        background: #FFFFFF;
-        border-radius: 4px;
-        margin-bottom: 4px;
-        margin-right: 20px;
-
-        padding-top: 50px;
-        padding-left: 20px;
-        padding-right: 20px;
-
-        text-align: center;
-
-        &:nth-child(4n) {
-          margin-right: 0px;
-        }
-
-        &:hover {
-          box-shadow: 0px 18px 38px 0px rgba(22, 25, 32, 0.1);
-          transform: translateY(-20px);
-        }
-
-        .align-center {
-          text-align: center;
-          height: 75px;
-
-          margin-bottom: 60px;
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .icon {
-          max-height: 100px;
-        }
-
-        .card-title {
-          width: 100%;
-          text-align: center;
-          margin-bottom: 20px;
-          font-size:16px;
-          font-weight:600;
-          color:rgba(0,0,0,1);
-          line-height:23px;
-        }
-
-        .card-desc {
-          width: 100%;
-          height: 16px;
-          font-size: 16px;
-          font-family: PingFang SC;
-          font-weight: 500;
-          color: rgba(0, 0, 0, 0.6);
-          line-height: 26px;
-          // opacity:0.6;
-
-          text-align: left;
-        }
-      }
+    /deep/ .swiper-pagination-bullet {
+      width: 38px;
+      height: 5px;
+      border-radius: unset;
+      background: rgba(255, 255, 255, 0.4);
+      opacity: unset;
+      margin-right: 13px;
+    }
+    /deep/ .swiper-pagination-bullet-active {
+      background: #1E66D7;
+    }
+    /deep/ .swiper-pagination {
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
     }
   }
+
 </style>

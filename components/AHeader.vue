@@ -177,7 +177,6 @@ $NAV_SELECTED_COLOR: black;
       color:rgba(0,0,0,1);
       line-height:21px;
       text-decoration: none;
-      font-size:14px;
       color: rgba(0,0,0,.6);
       display: block;
       margin-right: 80px;
@@ -190,11 +189,8 @@ $NAV_SELECTED_COLOR: black;
         padding-top: 39px - 4px;
         padding-bottom: 34px - 14px;
         padding-left: 43px;
-        /*padding-right: 59px;*/
         padding-right: 43px;
-        /*min-width:292px;*/
         width: 160px;
-        // height:234px;
         background:rgba(246,246,246,1);
 
         .title-row {

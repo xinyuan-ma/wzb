@@ -16,9 +16,9 @@
           <span>邮箱：zhouhong@wanshuijin.com</span>
         </div>
       </div>
-      <div class="home-footer">
-        上海添青科技有限公司 备案号:12345
-      </div>
+    </div>
+    <div class="home-footer">
+      上海添青科技有限公司 备案号:12345
     </div>
   </div>
 </template>
@@ -46,22 +46,18 @@ export default {
 
 .footer {
   position: relative;
-  display: flex;
   width: 100%;
-
+  background: #131C33;
   min-width: $PAGE_MAX_WIDTH;
-  // height: 491px;
-  height: 326px;
   /*background-color: #FB5640;*/
-  align-items: center;
-  justify-content: center;
 
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 90% 100%;
 
   .container {
-    min-width: $PAGE_MAX_WIDTH;
+    margin: 0 auto;
+    width: 1200px;
   }
 
   .link-content {
@@ -108,6 +104,7 @@ export default {
     font-weight: 400;
     color: #A8ADB6;
     background: #303645;
+    margin: 0 auto;
   }
 }
 </style>
