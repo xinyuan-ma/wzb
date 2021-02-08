@@ -850,7 +850,9 @@
       /deep/ .el-table {
         .el-table__header-wrapper {
           tr {
-            background-color: #2E3139 !important;
+            th {
+              background-color: #2E3139 !important;
+            }
             height: 21px;
             font-size: 15px;
             font-weight: 400;
