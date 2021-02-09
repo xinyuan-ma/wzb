@@ -437,7 +437,8 @@
       makeSwiper () {
         let mySwiper = new Swiper('.swiper-container', {
           // autoplay: true,//可选选项，自动滑动
-          slidesPerView: 1.6,
+          // slidesPerView: 1.9,
+          slidesPerView: 2,
           // loop: true,
           grabCursor: true,
           pagination: {
