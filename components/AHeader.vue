@@ -65,8 +65,8 @@ export default {
       ImgHome,
       navs: [
         { title: '首页', url: '/' },
-        { title: '个税通', url: '/perTax/'},
-        { title: '完税服务', url: '/taxPlan/'},
+        { title: '产品与服务', url: '/cloud/'},
+        { title: '加入我们', url: '/joinUs/'},
         // {
         //   title: '完税服务',
         //   url: 'javascript:;',
@@ -88,8 +88,7 @@ export default {
         //     // },
         //   ],
         // },
-        { title: '合伙人计划', url: '/partners/', },
-        { title: '关于我们', url: '/contact/' },
+        { title: '关于我们', url: '/introduction/' },
       ],
       currentPath: '',
       parentPath: '',
@@ -131,9 +130,14 @@ export default {
 
 $NAV_SELECTED_COLOR: black;
 .page-header {
-
+  position: sticky;
+  top: 0;
+  z-index: 100000;
+  background: #ffffff;
+  height: 90px;
+  overflow: hidden;
+  border-bottom: 1px solid #DADCE0;
   .container {
-    // width: 100vw;
     width: $PAGE_MAX_WIDTH;
 
     margin: 0 auto;

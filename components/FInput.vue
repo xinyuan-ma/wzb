@@ -21,7 +21,7 @@ export default {
       default () {
         return ''
       }
-    },
+    }
   },
   data () {
     return {
@@ -48,25 +48,22 @@ export default {
 @import "../style/conf.scss";
 
 input {
-  // width: 297px;
-  width: 100%;
-  height: 61px;
-
+  width: 300px;
+  height: 33px;
   font-size:14px;
-  font-family:PingFang SC;
   font-weight:400;
   color:rgba(0,0,0,1);
-  line-height:50px;
-  padding: 23.5px 30px;
-  border-radius: 3px;
-  border: none;
+  line-height:33px;
+  padding: 13px;
+  border-radius: 0;
+  border: 1px solid #CCCCCC;
 
   &:focus {
-    outline-color: $THEME_ORANGE;
+    outline-color: #108CEE;
   }
 
   &::placeholder {
-    opacity:0.5;
+    color: #8E8E8E;
   }
 }
 </style>
