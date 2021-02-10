@@ -18,8 +18,10 @@
         <div class="lesson-info first">
           <div class="lesson-item" v-for="(item,key) in lessonTopList" :key="key">
             <img :src="item.icon" alt="">
-            <p class="title">{{item.title}}</p>
-            <p class="des" v-html="item.des"></p>
+            <div>
+              <p class="title">{{item.title}}</p>
+              <p class="des" v-html="item.des"></p>
+            </div>
           </div>
         </div>
       </div>
@@ -266,7 +268,7 @@
         align-items: center;
         justify-content: space-around;
         .lesson-item {
-          padding: 60px 0 30px 0;
+          padding: 50px 0 30px 0;
           border-top: 3px solid #2A41C5;
           border-image:linear-gradient(90deg, #2A41C5 0%, #06AEFC 100%) 1 10;
           width: 358px;
@@ -290,7 +292,7 @@
             font-weight: 400;
             color: #1F1F1F;
             line-height: 27px;
-            margin: 25px 0 4px 0;
+            margin-bottom: 4px;
             &.titleTop {
               margin-top: 40px;
             }
