@@ -8,8 +8,8 @@
         </div>
         <div class="link-item btn">
           <p class="title">产品与服务</p>
-          <a href="https://www.wanshuijin.com/" target="_blank">税务云平台</a>
-          <a href="https://www.wanshuijin.com/" target="_blank">精品课</a>
+          <a href="/cloud/">税务云平台</a>
+          <a href="/course/">精品课</a>
         </div>
         <div class="link-item">
           <p class="title">联系我们</p>

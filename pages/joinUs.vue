@@ -149,11 +149,14 @@
       text-align: left;
       background: #FFFFFF;
       box-shadow: 0px 0px 10px 0px rgba(211,211,211,0.5);
+      &:hover {
+        box-shadow: 0px 0px 10px 0px rgba(31,31,31,0.3);
+      }
       .title {
         font-size: 20px;
         font-weight: 400;
         color: #59A2C8;
-        line-height: 27p;
+        line-height: 27px;
       }
       .info {
         font-size: 15px;

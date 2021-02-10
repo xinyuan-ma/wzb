@@ -104,7 +104,7 @@
         </div>
 
         <div class="lesson-info">
-          <div class="lesson-item" v-for="(item,key) in lessonBotList" :key="key">
+          <div class="lesson-item" :class="{'view': !item.title}" v-for="(item,key) in lessonBotList" :key="key">
             <img :src="item.icon" alt="">
             <div v-if="!item.title" class="details" :style="item.img | imgbg" @click="goDetail">
               <p class="detail-btn">查看详情</p>
@@ -575,6 +575,10 @@
       background: #FFFFFF;
       margin-right: 26px;
       box-shadow: 0px 0px 10px 0px rgba(146,150,191,0.5);
+      transition: all 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+      &:hover {
+        transform: translateY(-20px);
+      }
       &:last-of-type {
         margin-right: 0;
       }
@@ -656,6 +660,12 @@
         padding: 44px 33px;
         text-align: left;
         display: inline-block;
+        &:hover {
+          .title {
+            transition: all 0.3s linear;
+            color: rgba(31,31,31,0.8);
+          }
+        }
         &.left {
           width: 293px;
           height: 473px;
@@ -791,6 +801,15 @@
           align-items: center;
           flex-direction: column;
           position: relative;
+          transition: all 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+          &:hover {
+            transform: translateY(-20px);
+          }
+          &.view {
+            &:hover {
+              transform: none;
+            }
+          }
 
           .details {
             width: 238px;

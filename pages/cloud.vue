@@ -277,6 +277,10 @@
           flex-direction: column;
           position: relative;
           background: #ffffff;
+          transition: all 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+          &:hover {
+            transform: translateY(-20px);
+          }
           img {
             width: 78px;
             height: auto;
@@ -317,6 +321,12 @@
         text-align: center;
         display: inline-block;
         border:1px dashed #888888;
+        &:hover {
+          .title {
+            transition: all 0.3s linear;
+            color: rgba(31,31,31,0.8);
+          }
+        }
         &.left {
           width: 293px;
           height: 473px;

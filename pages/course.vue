@@ -47,7 +47,7 @@
         <p class="lesson-tap">性价比超高的税务课程 终生学习睿智的选择</p>
         <div class="lesson-list lesson-middle">
           <div class="lesson-info middle">
-            <div class="lesson-item" v-for="(item,key) in lessonMiddleList" :key="key">
+            <div class="lesson-item superiority" v-for="(item,key) in lessonMiddleList" :key="key">
               <img :src="item.icon" alt="">
               <div>
                 <p class="title">{{item.title}}</p>
@@ -363,6 +363,19 @@
           align-items: center;
           flex-direction: column;
           position: relative;
+          transition: all 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+          &:hover {
+            transform: translateY(-20px);
+          }
+          &.superiority {
+            &:hover {
+              transform: none;
+              img {
+                transition: all 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+                transform: scale(1.1, 1.1) !important;
+              }
+            }
+          }
           &:nth-of-type(4), &:nth-of-type(5), &:nth-of-type(6) {
             margin-top: 75px;
           }
