@@ -42,7 +42,7 @@
     },
     head() {
       return {
-        title: '问政宝 - 工作详情'
+        title: '问政宝 - 加入我们'
       }
     },
     data() {
@@ -113,7 +113,7 @@
     display: flex;
     justify-content: center;
     position: sticky;
-    top: 90px;
+    top: 75px;
     z-index: 1;
     border-bottom: 1px solid #DADCE0;
   }

@@ -1,8 +1,8 @@
 {
-  "name": "wanshuijin",
+  "name": "wenzhengbao",
   "version": "1.0.0",
-  "description": "完税金",
-  "author": "wanshuijin",
+  "description": "问政宝",
+  "author": "wenzhengbao",
   "private": true,
   "scripts": {
     "nuxt": "nuxt",

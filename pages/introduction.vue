@@ -28,7 +28,7 @@
     components: {},
     head() {
       return {
-        title: '问政宝 - 平台简介'
+        title: '问政宝 - 关于我们'
       }
     },
     filters: {imgbg},

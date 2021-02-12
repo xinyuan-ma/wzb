@@ -1,14 +1,53 @@
 <template>
-  <div class="page-header">
+  <div class="page-header" :class="{joinUs: joinUs}">
     <div class="container">
       <div class="left logo">
-        <img :src="ImgHome.imgHomeLogo" alt="">
+        <img class="job-offer" v-if="joinUs" :src="ImgHome.jobOffer" alt="">
+        <img class="imgHome-logo" v-else :src="ImgHome.imgHomeLogo" alt="">
         <div class="login">
-          <span class="free-register">免费注册</span>
-          <span class="free-login">登录</span>
+          <div v-if="joinUs" class="navs join-us">
+            <a
+              v-for="(item, index) in navs"
+              :key="index"
+              :href="item.url"
+              :class="{
+            selected: parentPath === item.url,
+            parentNode: item.sub,
+          }"
+              class="nav-item easing"
+              @mouseover="onMouseover(item.title)">
+              <div class="text">
+                {{ item.title }}
+                <div v-if="isItemHover && item.sub" class="nav-cols">
+                  <div class="title-row">
+                    <div v-for="(sub, sIdx) in item.sub" :key="sIdx" class="nav-type-title">
+                      {{ sub.title }}
+                    </div>
+                  </div>
+
+                  <div class="children-row">
+                    <div v-for="(sub, sIndex) in item.sub" :key="sIndex" class="nav-children">
+                      <a
+                        v-for="(child, cidx) in sub.children"
+                        :key="cidx"
+                        :href="child.url"
+                        :class="{selected: currentPath === child.url}"
+                        class="child-nav-item">
+                        {{ child.title }}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div>
+            <span class="free-register">免费注册</span>
+            <span class="free-login">登录</span>
+          </div>
         </div>
       </div>
-      <div class="navs">
+      <div v-if="!joinUs" class="navs">
         <a
           v-for="(item, index) in navs"
           :key="index"
@@ -92,17 +131,12 @@ export default {
       ],
       currentPath: '',
       parentPath: '',
-
       isItemHover: '',
+      joinUs: false
     }
   },
-  watch: {
-    '$route.path': function (newVal, oldVal) {
-      console.log(newVal, 'newVal');
-      if (newVal == '/perTax') {
-        this.parentPath = '/perTax/'
-      }
-    }
+  created () {
+    this.judgement()
   },
   mounted () {
     const pathStr = this.$route.path
@@ -115,6 +149,14 @@ export default {
     }
   },
   methods: {
+    judgement () { // 判断是否是招聘页面
+      let path = this.$route.path
+      if (path == '/joinUs/' || path == '/jobDuty/') {
+        this.joinUs = true
+      } else {
+        this.joinUs = false
+      }
+    },
     onMouseover (title) {
       if (title === '完税服务') {
         this.isItemHover = true
@@ -137,9 +179,11 @@ $NAV_SELECTED_COLOR: black;
   height: 90px;
   overflow: hidden;
   border-bottom: 1px solid #DADCE0;
+  &.joinUs {
+    height: 75px;
+  }
   .container {
     width: $PAGE_MAX_WIDTH;
-
     margin: 0 auto;
 
     align-items: center;
@@ -150,14 +194,22 @@ $NAV_SELECTED_COLOR: black;
       justify-content: space-between;
       align-items: center;
 
-      img {
+      .job-offer {
+        width: 131px;
+        height: 35px;
+      }
+      .imgHome-logo {
         width: 96px;
         height: 35px;
       }
       .login {
+        flex: 1;
         font-weight: bold;
-        line-height: 21px;
+        line-height: 36px;
         font-size: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
         .free-register {
           color: #1F1F1F;
         }
@@ -174,6 +226,9 @@ $NAV_SELECTED_COLOR: black;
     margin-bottom: 16px;
     display: flex;
     flex-direction: row;
+    &.join-us {
+      margin: 0;
+    }
     // 企业登录
     .nav-item {
       font-size:15px;

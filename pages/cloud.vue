@@ -87,8 +87,6 @@
   import ImgCourse from '@/assets/course'
   import ImgHome from '@/assets/home'
   import {imgbg} from '@/components/utils/filters'
-  import introduce1 from "~/assets/introduce/introduce1.png";
-
 
   export default {
     name: 'Contract',

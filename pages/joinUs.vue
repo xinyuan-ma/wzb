@@ -48,7 +48,7 @@
     },
     head() {
       return {
-        title: '问政宝 - 税务云平台'
+        title: '问政宝 - 加入我们'
       }
     },
     filters: {imgbg},
@@ -104,7 +104,7 @@
     },
     methods: {
       goDetail (type) {
-        this.$router.push(`/jobDuty?type=${type}`)
+        this.$router.push(`/jobDuty/?type=${type}`)
       },
       handleSizeChange(val) {
         console.log(`每页 ${val} 条`)
@@ -133,7 +133,7 @@
     position: sticky;
     top: 0;
     z-index: 1;
-    top: 90px;
+    top: 75px;
     border-bottom: 1px solid #DADCE0;
   }
 
