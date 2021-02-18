@@ -1,9 +1,9 @@
 {
-    "name": "WanShuiJin",
-    "short_name": "WanShuiJin",
+    "name": "WenZhengBao",
+    "short_name": "WenZhengBao",
     "icons": [
         {
-            "src": "/favicon/android-chrome-96x96.png",
+            "src": "/favicon/logo.png",
             "sizes": "96x96",
             "type": "image/png"
         }
