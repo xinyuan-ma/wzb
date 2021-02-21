@@ -8,8 +8,8 @@
         </div>
         <div class="link-item btn">
           <p class="title">产品与服务</p>
-          <a href="/cloud">税务云平台</a>
-          <a href="/course">精品课</a>
+          <span href="/cloud" @click="goDetail('/cloud')">税务云平台</span>
+          <span href="/course" @click="goDetail('/course')">精品课</span>
         </div>
         <div class="link-item">
           <p class="title">联系我们</p>
@@ -34,6 +34,10 @@ export default {
     }
   },
   methods: {
+    goDetail (url) {
+      if(!url) return
+      this.$router.push(url)
+    },
     goPolice () {
       window.location.href = 'http://wap.scjgj.sh.gov.cn/businessCheck/verifKey.do?showType=extShow&serial=9031000020190828153229000004976296-SAIC_SHOW_310000-2c9be8bd710251bb017163f61e9e3bb1900&signData=MEUCIQCZ6sNbwCqQL581oXBA4xr4IHU38h34i45N50Xk9lWnAwIgTtMEykgf589OQ/pTUgbdlFPHRqorPH/wNgBvmIUMetY='
     }
@@ -84,7 +88,8 @@ export default {
         margin-right: 50px;
       }
 
-      a {
+      a, span {
+        cursor: pointer;
         text-decoration: none;
         margin-right: 38px;
         color: #A8A8A8;

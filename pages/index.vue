@@ -35,11 +35,7 @@
       <p class="title">问政宝政策信息云平台</p>
     </div>
     <div class="info-item">
-      <div v-for="item in cloudInfo" :key="key">{{item}}</div>
-    </div>
-
-    <div>
-
+      <div v-for="(item,key) in cloudInfo" :key="key">{{item}}</div>
     </div>
     <!--<div :style="ImgHome.platform | imgbg" class="platform"></div>-->
 

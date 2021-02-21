@@ -24,6 +24,7 @@ import tableError from './wzb/table-error.png'
 import tableRight from './wzb/table-right.png'
 import feedBack from './wzb/feedBack.png'
 import jobOffer from './wzb/jobOffer.png'
+import Logo from './wzb/Logo.png'
 export default {
   imgHomeLogo,
   imgHomeTop,
@@ -50,5 +51,6 @@ export default {
   tableError,
   tableRight,
   feedBack,
-  jobOffer
+  jobOffer,
+  Logo
 }

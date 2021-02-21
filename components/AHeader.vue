@@ -3,8 +3,11 @@
   <div class="page-header">
     <div class="container">
       <div class="left logo">
-        <img class="job-offer" v-if="joinUs" :src="ImgHome.jobOffer" alt="">
-        <img class="imgHome-logo" v-else :src="ImgHome.imgHomeLogo" alt="">
+        <div class="logo-btn">
+          <img class="imgHome-logo" :src="ImgHome.Logo" alt="">
+          <span>{{joinUs ?  '问政宝招聘' : '问政宝'}}</span>
+        </div>
+        <!--<img class="job-offer" v-if="joinUs" :src="ImgHome.Logo" alt="">-->
         <div class="login">
           <!--<div v-if="joinUs" class="navs join-us">-->
             <!--<a-->
@@ -50,7 +53,7 @@
       </div>
       <!--<div v-if="!joinUs" class="navs">-->
       <div class="navs">
-        <a
+        <div
           v-for="(item, index) in navs"
           :key="index"
           :href="item.url"
@@ -61,7 +64,7 @@
           class="nav-item easing"
           @mouseover="onMouseover(item.title)">
           <div class="text">
-            {{ item.title }}
+            <span @click="goDetail(item.url)">{{ item.title }}</span>
             <div class="nav-cols" v-show="isItemHover && item.sub">
               <div class="title-row">
                 <div v-for="(sub, sIdx) in item.sub" :key="sIdx" class="nav-type-title" @click="goDetail(sub.url)">
@@ -83,7 +86,7 @@
               </div>
             </div>
           </div>
-        </a>
+        </div>
       </div>
     </div>
   </div>
@@ -108,7 +111,8 @@ export default {
         { title: '首页', url: '/' },
         {
           title: '产品与服务',
-          url: 'javascript:;',
+          // url: 'javascript:;',
+          url: '',
           sub: [
             {
               title: '政策云平台',
@@ -120,7 +124,7 @@ export default {
             },
           ]
         },
-        { title: '加入我们', url: '/joinUs/'},
+        { title: '加入我们', url: '/joinUs'},
         // {
         //   title: '完税服务',
         //   url: 'javascript:;',
@@ -150,21 +154,22 @@ export default {
       joinUs: false
     }
   },
-  created () {
-    this.judgement()
+  watch: {
+    '$route.path': function (path, oldVal) {
+      console.log(path, 'newVal');
+      if (path == '/joinUs' || path == '/jobDuty') {
+        this.joinUs = true
+      } else {
+        this.joinUs = false
+      }
+    }
   },
   mounted () {
-    // const pathStr = this.$route.path
-    // if (pathStr.match(/solution/) || pathStr.match(/flexible-labor/)) {
-    //   this.parentPath = 'javascript:;'
-    //   this.currentPath = pathStr
-    // } else {
-    //   this.parentPath = pathStr
-    //   this.currentPath = pathStr
-    // }
+    this.judgement()
   },
   methods: {
     goDetail (url) {
+      if(!url) return
       this.$router.push(url)
       this.isItemHover = false
     },
@@ -213,16 +218,22 @@ $NAV_SELECTED_COLOR: black;
       justify-content: space-between;
       align-items: center;
 
-      .job-offer {
-        width: 131px;
+      .logo-btn {
+        display: flex;
+        align-items: center;
+        width: 200px;
         height: 35px;
-        flex-shrink: 0;
+        font-size: 16px;
+        font-weight: bold;
+        color: #1F1F1F;
+        line-height: 35px;
+        .imgHome-logo {
+          width: 35px;
+          height: 35px;
+          margin-right: 8px;
+        }
       }
-      .imgHome-logo {
-        width: 96px;
-        height: 35px;
-        flex-shrink: 0;
-      }
+
       .login {
         flex: 1;
         font-weight: bold;
@@ -259,7 +270,9 @@ $NAV_SELECTED_COLOR: black;
       display: block;
       margin-right: 80px;
       position: relative;
-
+      .text {
+        cursor: pointer;
+      }
       .nav-cols {
         position: absolute;
         top: 35px;
