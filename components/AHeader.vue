@@ -216,10 +216,12 @@ $NAV_SELECTED_COLOR: black;
       .job-offer {
         width: 131px;
         height: 35px;
+        flex-shrink: 0;
       }
       .imgHome-logo {
         width: 96px;
         height: 35px;
+        flex-shrink: 0;
       }
       .login {
         flex: 1;
