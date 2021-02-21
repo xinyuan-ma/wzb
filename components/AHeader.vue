@@ -1,53 +1,55 @@
 <template>
-  <div class="page-header" :class="{joinUs: joinUs}">
+  <!--<div class="page-header" :class="{joinUs: joinUs}">-->
+  <div class="page-header">
     <div class="container">
       <div class="left logo">
         <img class="job-offer" v-if="joinUs" :src="ImgHome.jobOffer" alt="">
         <img class="imgHome-logo" v-else :src="ImgHome.imgHomeLogo" alt="">
         <div class="login">
-          <div v-if="joinUs" class="navs join-us">
-            <a
-              v-for="(item, index) in navs"
-              :key="index"
-              :href="item.url"
-              :class="{
-            selected: parentPath === item.url,
-            parentNode: item.sub,
-          }"
-              class="nav-item easing"
-              @mouseover="onMouseover(item.title)">
-              <div class="text">
-                {{ item.title }}
-                <div v-if="isItemHover && item.sub" class="nav-cols">
-                  <div class="title-row">
-                    <div v-for="(sub, sIdx) in item.sub" :key="sIdx" class="nav-type-title">
-                      {{ sub.title }}
-                    </div>
-                  </div>
+          <!--<div v-if="joinUs" class="navs join-us">-->
+            <!--<a-->
+              <!--v-for="(item, index) in navs"-->
+              <!--:key="index"-->
+              <!--:href="item.url"-->
+              <!--:class="{-->
+            <!--selected: parentPath === item.url,-->
+            <!--parentNode: item.sub,-->
+          <!--}"-->
+              <!--class="nav-item easing"-->
+              <!--@mouseover="onMouseover(item.title)">-->
+              <!--<div class="text">-->
+                <!--{{ item.title }}-->
+                <!--<div v-if="isItemHover && item.sub" class="nav-cols">-->
+                  <!--<div class="title-row">-->
+                    <!--<div v-for="(sub, sIdx) in item.sub" :key="sIdx" class="nav-type-title">-->
+                      <!--{{ sub.title }}-->
+                    <!--</div>-->
+                  <!--</div>-->
 
-                  <div class="children-row">
-                    <div v-for="(sub, sIndex) in item.sub" :key="sIndex" class="nav-children">
-                      <a
-                        v-for="(child, cidx) in sub.children"
-                        :key="cidx"
-                        :href="child.url"
-                        :class="{selected: currentPath === child.url}"
-                        class="child-nav-item">
-                        {{ child.title }}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
+                  <!--<div class="children-row">-->
+                    <!--<div v-for="(sub, sIndex) in item.sub" :key="sIndex" class="nav-children">-->
+                      <!--<a-->
+                        <!--v-for="(child, cidx) in sub.children"-->
+                        <!--:key="cidx"-->
+                        <!--:href="child.url"-->
+                        <!--:class="{selected: currentPath === child.url}"-->
+                        <!--class="child-nav-item">-->
+                        <!--{{ child.title }}-->
+                      <!--</a>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</a>-->
+          <!--</div>-->
           <div>
             <span class="free-register">免费注册</span>
             <span class="free-login">登录</span>
           </div>
         </div>
       </div>
-      <div v-if="!joinUs" class="navs">
+      <!--<div v-if="!joinUs" class="navs">-->
+      <div class="navs">
         <a
           v-for="(item, index) in navs"
           :key="index"
@@ -60,9 +62,9 @@
           @mouseover="onMouseover(item.title)">
           <div class="text">
             {{ item.title }}
-            <div v-if="isItemHover && item.sub" class="nav-cols">
+            <div class="nav-cols" v-show="isItemHover && item.sub">
               <div class="title-row">
-                <div v-for="(sub, sIdx) in item.sub" :key="sIdx" class="nav-type-title">
+                <div v-for="(sub, sIdx) in item.sub" :key="sIdx" class="nav-type-title" @click="goDetail(sub.url)">
                   {{ sub.title }}
                 </div>
               </div>
@@ -104,7 +106,20 @@ export default {
       ImgHome,
       navs: [
         { title: '首页', url: '/' },
-        { title: '产品与服务', url: '/cloud/'},
+        {
+          title: '产品与服务',
+          url: 'javascript:;',
+          sub: [
+            {
+              title: '政策云平台',
+              url: '/cloud'
+            },
+            {
+              title: '精品课',
+              url: '/course'
+            },
+          ]
+        },
         { title: '加入我们', url: '/joinUs/'},
         // {
         //   title: '完税服务',
@@ -139,26 +154,30 @@ export default {
     this.judgement()
   },
   mounted () {
-    const pathStr = this.$route.path
-    if (pathStr.match(/solution/) || pathStr.match(/flexible-labor/)) {
-      this.parentPath = 'javascript:;'
-      this.currentPath = pathStr
-    } else {
-      this.parentPath = pathStr
-      this.currentPath = pathStr
-    }
+    // const pathStr = this.$route.path
+    // if (pathStr.match(/solution/) || pathStr.match(/flexible-labor/)) {
+    //   this.parentPath = 'javascript:;'
+    //   this.currentPath = pathStr
+    // } else {
+    //   this.parentPath = pathStr
+    //   this.currentPath = pathStr
+    // }
   },
   methods: {
+    goDetail (url) {
+      this.$router.push(url)
+      this.isItemHover = false
+    },
     judgement () { // 判断是否是招聘页面
       let path = this.$route.path
-      if (path == '/joinUs/' || path == '/jobDuty/') {
+      if (path == '/joinUs' || path == '/jobDuty') {
         this.joinUs = true
       } else {
         this.joinUs = false
       }
     },
     onMouseover (title) {
-      if (title === '完税服务') {
+      if (title === '产品与服务') {
         this.isItemHover = true
       } else {
         this.isItemHover = false
@@ -177,7 +196,7 @@ $NAV_SELECTED_COLOR: black;
   z-index: 100000;
   background: #ffffff;
   height: 90px;
-  overflow: hidden;
+  padding-top: 10px;
   border-bottom: 1px solid #DADCE0;
   &.joinUs {
     height: 75px;
@@ -189,7 +208,7 @@ $NAV_SELECTED_COLOR: black;
     align-items: center;
     justify-content: space-between;
     .logo {
-      margin: 10px 60px 8px 48px;
+      margin: 0 60px 10px 48px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -223,7 +242,6 @@ $NAV_SELECTED_COLOR: black;
 
   .navs {
     margin-left: 48px;
-    margin-bottom: 16px;
     display: flex;
     flex-direction: row;
     &.join-us {
@@ -233,44 +251,34 @@ $NAV_SELECTED_COLOR: black;
     .nav-item {
       font-size:15px;
       font-weight:500;
-      color:rgba(0,0,0,1);
       line-height:21px;
       text-decoration: none;
       color: rgba(0,0,0,.6);
       display: block;
       margin-right: 80px;
+      position: relative;
 
       .nav-cols {
-        display: none;
         position: absolute;
-        top: 90px;
-        left: 0px;
-        padding-top: 39px - 4px;
-        padding-bottom: 34px - 14px;
-        padding-left: 43px;
-        padding-right: 43px;
+        top: 35px;
+        left: 0;
         width: 160px;
-        background:rgba(246,246,246,1);
+        z-index: 10;
+        background: #F4F7F9;
 
         .title-row {
           display: flex;
-          flex-direction: row;
-          align-items: center;
-          justify-content: space-between;
-          border-bottom: 1px solid rgba(221,221,221,1);
-
+          flex-direction: column;
+          padding-left: 30px;
           .nav-type-title {
-            // width:36px;
-            // height:17px;
-            font-size:18px;
-            font-family:PingFang SC;
-            font-weight:bold;
-            color:rgba(0,0,0,1);
-            line-height:51px;
-
-            margin-right: 61px;
-            &:last-child {
-              margin-right: 0px;
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 50px;
+            text-decoration: none;
+            text-align: left;
+            color: rgba(0, 0, 0, 0.6);
+            &:hover {
+              color: #000000;
             }
           }
         }
@@ -311,11 +319,6 @@ $NAV_SELECTED_COLOR: black;
         // color: black;
         color: $NAV_SELECTED_COLOR;
         opacity:1;
-
-        .nav-cols {
-          display: block;
-          z-index: 79;
-        }
       }
       &:last-of-type {
         padding-right: 0px;

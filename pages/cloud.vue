@@ -5,8 +5,8 @@
       :style="ImgIntroduce.introduceTop | imgbg"
       class="head-img-bg imgbg full-box">
       <div class="container-screen-width">
-        <div class="head-title">问政宝旗下一站式税务内容云平台</div>
-        <div class="buy-now">立即购买</div>
+        <div class="head-title">问政宝旗下一站式政策信息云平台</div>
+        <div class="buy-now" @click="buy">立即购买</div>
       </div>
     </div>
     <div class="lesson">
@@ -77,8 +77,7 @@
         </div>
       </div>
     </div>
-
-
+    <buy-dialog ref="buyDialog"></buy-dialog>
   </div>
 </template>
 
@@ -87,10 +86,12 @@
   import ImgCourse from '@/assets/course'
   import ImgHome from '@/assets/home'
   import {imgbg} from '@/components/utils/filters'
-
+  import buyDialog from "@/components/buyDialog";
   export default {
     name: 'Contract',
-    components: {},
+    components: {
+      buyDialog
+    },
     head() {
       return {
         title: '问政宝 - 税务云平台'
@@ -142,6 +143,9 @@
       }
     },
     methods: {
+      buy () {
+        this.$refs.buyDialog.dialogVisible = true
+      },
     }
   }
 </script>
@@ -180,6 +184,7 @@
       }
 
       .buy-now {
+        cursor: pointer;
         width: 170px;
         height: 43px;
         line-height: 43px;

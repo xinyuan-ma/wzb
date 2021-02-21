@@ -30,7 +30,7 @@ export default {
   },
   watch: {
     tempValue () {
-      this.$emit('input', this.tempValue)
+      this.$emit('input', this.tempValue, this.placeholder)
     },
     value () {
       if (this.value !== this.tempValue) {

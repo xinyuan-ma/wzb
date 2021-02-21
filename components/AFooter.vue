@@ -8,8 +8,8 @@
         </div>
         <div class="link-item btn">
           <p class="title">产品与服务</p>
-          <a href="/cloud/">税务云平台</a>
-          <a href="/course/">精品课</a>
+          <a href="/cloud">税务云平台</a>
+          <a href="/course">精品课</a>
         </div>
         <div class="link-item">
           <p class="title">联系我们</p>
@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="home-footer">
-      上海添青科技有限公司 备案号:12345
+      上海添青科技有限公司 备案号: <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">Copyright 沪ICP备19039348号-1</a>
     </div>
   </div>
 </template>
@@ -105,6 +105,14 @@ export default {
     color: #A8ADB6;
     background: #303645;
     margin: 0 auto;
+
+    a {
+      text-decoration: none;
+      color: #A8ADB6;
+      &:hover {
+        color: #A8ADB6;
+      }
+    }
   }
 }
 </style>

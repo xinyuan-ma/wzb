@@ -7,17 +7,17 @@
     <div class="info">
       <p class="title"><span>24小时之内</span>会有工作人员与您对接</p>
       <div class="input-content">
-        <div class="tap">用户名</div>
-        <JobInput :value="name" placeholder="请输入您的姓名"></JobInput>
+        <div class="tap">姓&nbsp;名</div>
+        <JobInput :value="name" placeholder="请输入您的姓名" @input="input"></JobInput>
       </div>
       <div class="input-content">
-        <div class="tap">密码</div>
-        <JobInput :value="phone" placeholder="请输入可联系到您的手机号"></JobInput>
+        <div class="tap">手机号</div>
+        <JobInput :value="phone" placeholder="请输入可联系到您的手机号" @input="input"></JobInput>
       </div>
     </div>
     <span slot="footer" class="dialog-footer">
-    <el-button @click="dialogVisible = false">取 消</el-button>
-    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+    <el-button @click="close">取 消</el-button>
+    <el-button type="primary" @click="submit">确 定</el-button>
   </span>
   </el-dialog>
 </template>
@@ -47,6 +47,38 @@ export default {
     },
   },
   mounted () {},
+  methods: {
+    input (value, placeholder) {
+      if (placeholder == '请输入可联系到您的手机号') {
+        this.phone = value
+      } else {
+        this.name = value
+      }
+    },
+    submit() {
+      let message = ''
+      if (!this.name) {
+        message = '请输入姓名'
+      } else if (!this.phone) {
+        message = '请输入手机号'
+      } else if (!this.phone.match(/^1\d{10}$/)) {
+        message = '手机号输入有误'
+      }
+      if (message) {
+        return this.$alert( message , '提示', {
+          confirmButtonText: '确定',
+          showClose: false,
+          callback: action => {}
+        })
+      }
+      this.dialogVisible = false
+      this.name = this.phone = ''
+    },
+    close () {
+      this.dialogVisible = false
+      this.name = this.phone = ''
+    }
+  }
 }
 </script>
 

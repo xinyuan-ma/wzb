@@ -23,11 +23,25 @@
     </div>
 
     <div class="double-des">
-      <p class="des">TAX ADMINISTRATION</p>
-      <p class="title">问政宝税务云平台</p>
+      <p class="des">INTELLIGENT ALGORITHM</p>
+      <p class="title">智能推荐算法精准触达</p>
+    </div>
+    <div class="info-item">
+      <div v-for="(item,key) in calcInfo" :key="key">{{item}}</div>
     </div>
 
-    <div :style="ImgHome.platform | imgbg" class="platform"></div>
+    <div class="double-des">
+      <p class="des">POLICY INFORMATION</p>
+      <p class="title">问政宝政策信息云平台</p>
+    </div>
+    <div class="info-item">
+      <div v-for="item in cloudInfo" :key="key">{{item}}</div>
+    </div>
+
+    <div>
+
+    </div>
+    <!--<div :style="ImgHome.platform | imgbg" class="platform"></div>-->
 
     <div class="solve-question">
       <p class="solve-title">问政宝解决了哪些问题</p>
@@ -143,7 +157,7 @@
               <img class="table-right" v-if="scope.row.middle == 'right'" :src="ImgHome.tableRight" alt="">
               <img class="table-error" v-else-if="scope.row.middle == 'error'" :src="ImgHome.tableError" alt="">
               <template v-else-if="scope.row.middle == 'buy'">
-                <p class="buy-money">19800.00元/年</p>
+                <p class="buy-money">49800.00元/年</p>
                 <p class="buy-now" @click="buy">立即购买</p>
               </template>
               <span v-else>{{scope.row.middle}}</span>
@@ -154,7 +168,7 @@
               <img class="table-right" v-if="scope.row.advanced == 'right'" :src="ImgHome.tableRight" alt="">
               <img class="table-error" v-else-if="scope.row.advanced == 'error'" :src="ImgHome.tableError" alt="">
               <template v-else-if="scope.row.advanced == 'buy'">
-                <p class="buy-money">19800.00元/年</p>
+                <p class="buy-money">69800.00元/年</p>
                 <p class="buy-now" @click="buy">立即购买</p>
               </template>
               <span v-else>{{scope.row.advanced}}</span>
@@ -165,7 +179,7 @@
               <img class="table-right" v-if="scope.row.super == 'right'" :src="ImgHome.tableRight" alt="">
               <img class="table-error" v-else-if="scope.row.super == 'error'" :src="ImgHome.tableError" alt="">
               <template v-else-if="scope.row.super == 'buy'">
-                <p class="buy-money">19800.00元/年</p>
+                <p class="buy-money">99800.00元/年</p>
                 <p class="buy-now" @click="buy">立即购买</p>
               </template>
               <span v-else>{{scope.row.super}}</span>
@@ -239,6 +253,8 @@
             des: '资讯存储量'
           }
         ],
+        calcInfo: ['精准触达所需政策', '惠民政策进企入户', '党的政策春暖人心'],
+        cloudInfo: ['AI智能化快速生成', '为企业提供专属方案', '涵盖中央及各省市最新政策'],
         lessonTopList: [
           {
             icon: ImgHome.lessonTop1,
@@ -405,21 +421,15 @@
           },
           {
             icon: ImgHome.feedBack,
-            name: 'Lesa',
-            company: '上海市**税务咨询有限公司',
-            des: '成为问政宝的忠实粉丝是朋友推荐的。因为自己刚刚从事这个行业，很多东西也不太了解。自己想提升一下朋友就推荐了问政宝，自己也找了其他同类型平台对比发现还是问政宝好。对工作和学习都好很大的帮助，希望问政宝越办越好。'
+            name: '王*燕',
+            company: '广州市**税务代理有限公司',
+            des: '在网上被问政宝的价格所吸引，然后咨询了他们的客服人员，不得不说，使用问政宝可能是最正确的选择了。工作和学习效率大幅度提高，后悔没早点使用现在有朋友需要就直接推荐了。'
           },
           {
             icon: ImgHome.feedBack,
-            name: 'Lesa',
-            company: '上海市**税务咨询有限公司',
-            des: '成为问政宝的忠实粉丝是朋友推荐的。因为自己刚刚从事这个行业，很多东西也不太了解。自己想提升一下朋友就推荐了问政宝，自己也找了其他同类型平台对比发现还是问政宝好。对工作和学习都好很大的帮助，希望问政宝越办越好。'
-          },
-          {
-            icon: ImgHome.feedBack,
-            name: '李*',
-            company: '深圳市**科技有限公司',
-            des: '最近公司有做这方面的业务，领导说要找一个好的平台给员工培训一下这方面的知识，然后在网上看到问政宝这个平台就加工作人员聊了一下。看得出来很专业，也去公司看过，价格也便宜，想着反正要用就买了问政宝的会员。内部培训同事用完以后都说买对了很好用，里面的内容很系统全面还有智能机器人随时能解答问题。'
+            name: '张*阳',
+            company: '上海市**企业管理有限公司',
+            des: '用问政宝真的太香了。咨询了几家类似的平台，本来都打算付款了，后来了解到问政宝被深深的吸引了，内容相比其他平台要全要新，还有行业大咖专业指导该有的服务也都有，对比之后毫不犹豫选择了问政宝。'
           }
         ]
       }
@@ -437,9 +447,14 @@
       makeSwiper () {
         let mySwiper = new Swiper('.swiper-container', {
           // autoplay: true,//可选选项，自动滑动
+          speed: 500,
+          autoplay : {
+            disableOnInteraction: false,
+            delay: 2500
+          },
           // slidesPerView: 1.9,
-          slidesPerView: 2,
-          // loop: true,
+          slidesPerView: 'auto', // 自动根据slides的宽度来设定数量
+          loop: true,
           grabCursor: true,
           pagination: {
             el: '.swiper-pagination',
@@ -627,6 +642,24 @@
     }
   }
 
+  .info-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 1200px;
+    margin: 0 auto;
+    div {
+      color: #57AEF3;
+      border: 1px solid #1B91EF;
+      border-radius: 2px;
+      background-color: #E7F3FD;
+      padding: 15px 25px;
+      width: 250px;
+      text-align: center;
+      font-weight: bold;
+      box-shadow: #1B91EF 0px 0px 3px;
+    }
+  }
   .platform {
     width: 1170px;
     height: 45px;
@@ -967,7 +1000,8 @@
   }
 
   .swiper-container {
-    width: 1200px;
+    width: 85%;
+    min-width: 1200px;
     height: 320px;
     margin: 0 auto;
     margin-bottom: 30px;

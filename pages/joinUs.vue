@@ -1,38 +1,40 @@
 <template>
   <div class="container">
     <!-- 头图 -->
-    <div class="search-top">
-      <FInput placeholder="搜索工作岗位" :value="inputValue"></FInput>
-    </div>
+    <!--<div class="search-top">-->
+      <!--<FInput placeholder="搜索工作岗位" :value="inputValue"></FInput>-->
+    <!--</div>-->
 
     <div class="job-list">
       <div class="job-item" v-for="(item, key) in jobList" :key="key" @click="goDetail(item.type)">
-        <p class="title">{{item.title}}</p>
-        <p class="info">{{item.info}}</p>
-        <div class="des">{{item.des}}</div>
-        <div class="join-us group">
-          <img :src="ImgJoinUs.group" alt="">
-          <p>分享</p>
-        </div>
-        <div class="join-us path">
-          <img :src="ImgJoinUs.path" alt="">
-          <p>收藏</p>
-        </div>
+        <!--<a :href="item.url">-->
+          <p class="title">{{item.title}}</p>
+          <p class="info">{{item.info}}</p>
+          <div class="des">{{item.des}}</div>
+        <!--</a>-->
+        <!--<div class="join-us group">-->
+          <!--<img :src="ImgJoinUs.group" alt="">-->
+          <!--<p>分享</p>-->
+        <!--</div>-->
+        <!--<div class="join-us path">-->
+          <!--<img :src="ImgJoinUs.path" alt="">-->
+          <!--<p>收藏</p>-->
+        <!--</div>-->
       </div>
     </div>
 
-    <div class="block">
-      <span class="page">每页显示</span>
-      <el-pagination
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        :current-page.sync="currentPage2"
-        :page-sizes="[10, 30, 50, 100]"
-        :page-size="10"
-        layout="sizes, prev, pager, next"
-        :total="100">
-      </el-pagination>
-    </div>
+    <!--<div class="block">-->
+      <!--<span class="page">每页显示</span>-->
+      <!--<el-pagination-->
+        <!--@size-change="handleSizeChange"-->
+        <!--@current-change="handleCurrentChange"-->
+        <!--:current-page.sync="currentPage2"-->
+        <!--:page-sizes="[10, 30, 50, 100]"-->
+        <!--:page-size="10"-->
+        <!--layout="sizes, prev, pager, next"-->
+        <!--:total="100">-->
+      <!--</el-pagination>-->
+    <!--</div>-->
 
   </div>
 </template>
@@ -59,6 +61,7 @@
         currentPage2: 5,
         jobList: [
           {
+            url: `/jobDuty/?type=taxation`,
             type: 'taxation',
             title: '税务专家',
             info: '上海｜本科及以上｜经验不限｜2021-01-01',
@@ -71,6 +74,7 @@
             }
           },
           {
+            url: `/jobDuty/?type=technology`,
             type: 'technology',
             title: '技术专家',
             info: '上海｜本科及以上｜经验不限｜2021-01-01',
@@ -83,6 +87,7 @@
             }
           },
           {
+            url: `/jobDuty/?type=market`,
             type: 'market',
             title: '营销专家',
             info: '上海｜本科及以上｜经验不限｜2021-01-01',
@@ -93,18 +98,27 @@
               duty: '1.对品牌进行线上和线下特色营销方案体系(含新用户获取方案)的搭建和制定；<br>2.对品牌进行节日、爆款和阶段性主推产品等营销方案的制定；<br>3.根据项目定位，制定和实施项目整体营销计划、广告宣传计划及相应费用方案的制定；<br>4.对项目的策划落地进度和销售进行动态监控,并对活动开展的外界环境、客观条件进行全面的分析；<br>5.负责年度、季度营销报告的编写,阶段性营销思路调整和策略方案的制定,并负责实施与评估；<br>6.负责整合活动成果、提炼活动亮点，制定有助于提升企业形象的方案策划,并协助执行；<br>7.完成上级交办的其他任务',
               qualifications: '1.本科及以上学历，广告类、电子商务、传播学、市场营销、经济或企业管理等相关专业优先；<br>2.五年以上市场营销策划工作经验,有财税产品经验优先；<br>3.擅长线上及线下活动策划，有过成功独立策划营销推广活动经验者优先；<br>4.能熟练使用各种营销推广工具(含ps软件) ,能够科学地制定和审核媒介计划,能合理有效的利用各类营销资源；<br>5.有较强的市场咸知能力.敏锐地把握市场动态。'
             }
+          },
+          {
+            url: `/jobDuty/?type=marker`,
+            type: 'marker',
+            title: '市场推广',
+            info: '上海｜本科及以上｜经验不限｜2021-01-01',
+            des: '制定公司市场发展目标和营销方案；负责市场业务开拓（To B 业务为主）、宣传推广，包括项目管理以及进度跟踪；分析和预测市场趋势，为决策提供精确参考信息；开拓和发展销售市场，建立、协调和维护客户，确保良好的外部环境；负责客户关系的维护、对外合作。',
+            jobDuty: {
+              title: '市场推广',
+              des: '上海｜本科及以上｜经验不限｜2021-01-01',
+              duty: '1、制定公司市场发展目标和营销方案；<br>2、负责市场业务开拓（To B 业务为主）、宣传推广，包括项目管理以及进度跟踪；<br>3、分析和预测市场趋势，为决策提供精确参考信息；<br>4、开拓和发展销售市场，建立、协调和维护客户，确保良好的外部环境；<br>5、负责客户关系的维护、对外合作。',
+              qualifications: '1、大学本科及以上学历；<br>2、五年以上To B市场营销工作经验；<br>3、具有敏感的商业和市场意识，分析问题及解决问题能力强；<br>4、具有优秀的资源整合能力和业务推进能力；<br>5、具备良好的沟通合作技巧及丰富的团队建设经验；<br>6、熟悉市场策划活动执行流程，有市场策划成功的案例和工作经验。'
+            }
           }
         ]
       }
     },
-    mounted() {
-      for (let i = 0; i < 2; i++) {
-        this.jobList = this.jobList.concat(this.jobList)
-      }
-    },
+    mounted() {},
     methods: {
       goDetail (type) {
-        this.$router.push(`/jobDuty/?type=${type}`)
+        this.$router.push(`/jobDuty?type=${type}`)
       },
       handleSizeChange(val) {
         console.log(`每页 ${val} 条`)
@@ -140,6 +154,10 @@
   .job-list {
     width: 1200px;
     padding: 0 38px;
+    margin-bottom: 30px;
+    a {
+      text-decoration: none;
+    }
     .job-item {
       cursor: pointer;
       position: relative;
