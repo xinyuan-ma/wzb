@@ -36,7 +36,7 @@
   import ImgJoinUs from '@/assets/joinUs'
   import FInput from '@/components/JobInput'
   export default {
-    name: 'jobDuty',
+    name: 'JobDuty',
     components: {
       FInput
     },
@@ -102,7 +102,7 @@
         jobInfo: {}
       }
     },
-    created() {
+    mounted() {
       this.jobInfo = this.jobList.filter(item => item.type == this.$route.query.type)[0].jobDuty
     },
     methods: {
