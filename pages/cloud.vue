@@ -107,15 +107,20 @@
           {
             icon: ImgIntroduce.introduce1,
             title: '专业权威',
-            des: '税务专业人士的最好工具<br>第一时间传递财税'
+            des: '权威专家政策解读<br>第一时间传递所需政策信息'
           },{
             icon: ImgIntroduce.introduce2,
             title: '高效智能',
-            des: '采用领先的人工智能技术打造<br>操作便捷一键'
+            des: '采用领先的人工智能技术打造<br>操作便捷一键问政，精准触达所需政策'
           },{
             icon: ImgIntroduce.introduce3,
             title: '内容全面',
-            des: '财税信息全覆盖，内容定期更新<br>最新政策分析与解答'
+            des: '政策信息全覆盖，内容定期更新<br>最新政策分析与解答'
+          },
+          {
+            icon: ImgIntroduce.introduce4,
+            title: '业务灵活定制',
+            des: 'AI智能化快速生成，业务灵活定制<br>为企业提供专属方案'
           }
         ],
         lessonMiddleList: [
@@ -274,7 +279,7 @@
           padding: 50px 0 30px 0;
           border-top: 3px solid #2A41C5;
           border-image:linear-gradient(90deg, #2A41C5 0%, #06AEFC 100%) 1 10;
-          width: 358px;
+          width: 280px;
           height: 268px;
           display: flex;
           align-items: center;
@@ -301,7 +306,7 @@
             }
           }
           .des {
-            font-size: 20px;
+            font-size: 16px;
             font-weight: 400;
             color: #A8A8A8;
             line-height: 27px;

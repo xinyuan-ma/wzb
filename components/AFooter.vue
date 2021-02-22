@@ -8,7 +8,7 @@
         </div>
         <div class="link-item btn">
           <p class="title">产品与服务</p>
-          <span href="/cloud" @click="goDetail('/cloud')">税务云平台</span>
+          <span href="/cloud" @click="goDetail('/cloud')">政策云平台</span>
           <span href="/course" @click="goDetail('/course')">精品课</span>
         </div>
         <div class="link-item">
