@@ -67,7 +67,7 @@
             <span @click="goDetail(item.url)">{{ item.title }}</span>
             <div class="nav-cols" v-show="isItemHover && item.sub">
               <div class="title-row">
-                <div v-for="(sub, sIdx) in item.sub" :key="sIdx" class="nav-type-title" @click="goDetail(sub.url)">
+                <div :class="{selected: currentPath === sub.url}" v-for="(sub, sIdx) in item.sub" :key="sIdx" class="nav-type-title" @click="goDetail(sub.url)">
                   {{ sub.title }}
                 </div>
               </div>
@@ -157,11 +157,7 @@ export default {
   watch: {
     '$route.path': function (path, oldVal) {
       console.log(path, 'newVal');
-      if (path == '/joinUs' || path == '/jobDuty') {
-        this.joinUs = true
-      } else {
-        this.joinUs = false
-      }
+      this.judgement()
     }
   },
   mounted () {
@@ -171,10 +167,16 @@ export default {
     goDetail (url) {
       if(!url) return
       this.$router.push(url)
-      this.isItemHover = false
     },
     judgement () { // 判断是否是招聘页面
       let path = this.$route.path
+      console.log(path, 'path');
+      this.parentPath = path
+      this.currentPath = ''
+      if (path == '/cloud' || path == '/course') {
+        this.parentPath = ''
+        this.currentPath = path
+      }
       if (path == '/joinUs' || path == '/jobDuty') {
         this.joinUs = true
       } else {
@@ -292,6 +294,9 @@ $NAV_SELECTED_COLOR: black;
             text-decoration: none;
             text-align: left;
             color: rgba(0, 0, 0, 0.6);
+            &.selected {
+              color: #000000;
+            }
             &:hover {
               color: #000000;
             }
